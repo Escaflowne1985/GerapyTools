@@ -1,0 +1,49 @@
+### 必备库安装
+# gerapy 安装
+pip install gerapy
+# scrapyd 安装
+pip install scrapyd
+
+### 创建工作的文件目录，该目录下初始化项目（文件名随意）
+gerapy init
+
+### 初始化数据库
+cd gerapy
+gerapy migrate
+
+### 创建超级用户（用户名和密码都是admin）
+gerapy initadmin
+
+### 启动服务（可指定url和port）
+gerapy runserver 0.0.0.0:8000
+scrapyd 或者 /usr/local/python3/bin/scrapyd
+
+### 进入管理平台（浏览器输入）
+http://127.0.0.1:8000
+
+### 主机管理
+# 创建主机名称（机器名称：能区分出来就行）
+# 创建主机IP（IP网段：略）
+# 创建主机端口（端口号：一般默认6800）
+# 认证：目前这个用户名对和错都能正常运行
+
+### 项目管理
+# 直接把写好的scrapy项目仍到gerapy的project文件夹下就自动显示了
+# 确保该scrapy项目每个spider文件能单独执行
+
+### 任务管理
+# 创建任务 包括名称（自定义）、项目（需要和项目管理一致）、爬虫（单独spider文件）
+# 执行任务：主机 + 调度方式 + 运行时间 + 时区，大陆选择Asia/Hong_Kong
+
+### 云服务器部署（此处有些坑）
+# 需要安装和初始化同单机
+# 需要启动服务两项gerapy和scrapyd 
+# 错误 -bash: scrapyd: 未找到命令 需要创建软连接或直接找到文件启动
+ln -s /usr/local/python3/bin/gerapy  /usr/bin/gerapy
+# 错误 bash: scrapyd: command not found 需要创建软连接或直接找到文件启动
+/usr/local/python3/bin/scrapyd
+# 错误 bash: scrapy: command not found 需要创建软连接 
+ln -s /usr/local/python3/bin/scrapy /usr/bin/scrapy
+# 找不到软连接的目录使用查找
+find / -name scrapy
+
