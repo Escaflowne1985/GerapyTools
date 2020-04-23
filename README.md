@@ -1,2 +1,2 @@
 # GerapyTools
- GerapyDjango3 化境使用
+ GerapyDjango3 环境使用
